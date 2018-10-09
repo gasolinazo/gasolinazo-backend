@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb-base",
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 9
+  },
+  "rules": {
+    "max-len": ["error", { "code": 120, "ignoreTemplateLiterals": true }],
+    "no-console": 0
+  }
+}
