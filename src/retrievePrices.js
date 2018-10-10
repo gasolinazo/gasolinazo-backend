@@ -25,36 +25,43 @@ const API_URL = 'https://publicacionexterna.azurewebsites.net/publicaciones/pric
 //   ]
 // }
 
+
 const retrievePrices = function retrievePrices() {
-  request(API_URL, function (error, response, body) {
-    if (error) {
-      console.log('Error');
-      return;
-    }
-    parseString(body, function (err, result) {
-      const catalog = {};
-      result.places.place.map(place => {
-        const id = place.$.place_id;
+  return new Promise((resolve, reject) => {
+    request(API_URL, function (error, response, body) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      }
 
-        const reducer = (acum, price) => {
-          const amount = price._;
-          const type = price.$.type;
-          const lastUpdate = price.$.update_time;
-          acum[type] = {
-            amount,
-            lastUpdate,
-          };
-          return acum;
-        };
-
-        if (place.gas_price) {
-          const prices = place.gas_price.reduce(reducer, {});
-          catalog[id] = prices;
+      parseString(body, function (err, result) {
+        if (err) {
+          console.log(err);
+          reject(err);
         }
 
+        const catalog = {};
+        result.places.place.map(place => {
+          if (place.gas_price) {
+            const id = place.$.place_id;
+            const reducer = (acum, price) => {
+              const amount = price._;
+              const type = price.$.type;
+              const lastUpdate = price.$.update_time;
+              acum[type] = {
+                amount,
+                lastUpdate,
+              };
+              return acum;
+            };
+            const prices = place.gas_price.reduce(reducer, {});
+            catalog[id] = prices;
+          }
+
+        });
+
+        resolve(catalog);
       });
-      console.log(catalog);
-      return catalog;
     });
   });
 };

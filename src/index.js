@@ -1,2 +1,8 @@
 const prices = require('./retrievePrices');
-prices();
+
+async function test() {
+  const r = await prices();
+  console.log(r);
+}
+
+test();
