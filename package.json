@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy-dev": "sls deploy --stage dev",
     "test": "jest --coverage"
   },
   "repository": {
