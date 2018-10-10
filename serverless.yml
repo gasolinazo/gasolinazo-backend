@@ -45,13 +45,24 @@ resources:
       Properties:
         TableName: ${self:provider.stage}-gas-stations
         AttributeDefinitions:
-          -
-            AttributeName: id
+          - AttributeName: permisoid
+            AttributeType: S
+          - AttributeName: codigopostal
             AttributeType: S
         KeySchema:
           -
-            AttributeName: id
+            AttributeName: permisoid
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
+        GlobalSecondaryIndexes:
+          - IndexName: gsi-CodigoPostal
+            KeySchema:
+              - AttributeName: codigopostal
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
