@@ -2,6 +2,8 @@
   "name": "gasolinazo-backend",
   "version": "1.0.0",
   "scripts": {
+    "deploy-dev": "sls deploy --stage dev",
+    "deploy-prod": "sls deploy --stage prod",
     "test": "jest --coverage"
   },
   "dependencies": {
