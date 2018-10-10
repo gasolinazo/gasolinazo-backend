@@ -2,7 +2,7 @@ const request = require('request');
 var parseString = require('xml2js').parseString;
 
 const API_URL = 'https://publicacionexterna.azurewebsites.net/publicaciones/prices';
-
+// Data format from Government API
 // {
 //   "$": {
 //     "place_id": "11703"
@@ -24,7 +24,6 @@ const API_URL = 'https://publicacionexterna.azurewebsites.net/publicaciones/pric
 //     }
 //   ]
 // }
-
 
 const retrievePrices = function retrievePrices() {
   return new Promise((resolve, reject) => {
@@ -65,9 +64,5 @@ const retrievePrices = function retrievePrices() {
     });
   });
 };
-
-
-
-
 
 module.exports = retrievePrices;
