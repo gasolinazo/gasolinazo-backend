@@ -1,21 +1,9 @@
 {
   "name": "gasolinazo-backend",
   "version": "1.0.0",
-  "description": "## Getting started 1) Copy .env.example template file to .env and fill it ```sh cp .env.example .env ``` 2) Install dependencies: ```sh yarn ```",
-  "main": "index.js",
   "scripts": {
     "test": "jest --coverage"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gasolinazo/gasolinazo-backend.git"
-  },
-  "author": "Alan Rodriguez <alanrodriguezromero@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gasolinazo/gasolinazo-backend/issues"
-  },
-  "homepage": "https://github.com/gasolinazo/gasolinazo-backend#readme",
   "dependencies": {
     "aws-sdk": "^2.331.0",
     "dotenv": "^6.1.0",
