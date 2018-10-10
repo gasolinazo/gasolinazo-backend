@@ -5,8 +5,7 @@
 ```sh
 yarn
 ```
-
-## Run tests
+2) Run tests
 ```sh
 yarn run test
 ```
