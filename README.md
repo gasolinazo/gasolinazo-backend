@@ -1,11 +1,7 @@
 # Gasolinazo Backend
 
 ## Getting started
-1) Copy .env.example template file to .env and fill it
-```sh
-cp .env.example .env
-```
-2) Install dependencies:
+1) Install dependencies:
 ```sh
 yarn
 ```
@@ -13,4 +9,14 @@ yarn
 ## Run tests
 ```sh
 yarn run test
+```
+
+## Deploy Dev Environment
+```sh
+yarn run deploy-dev
+```
+
+## Deploy Production Environment
+```sh
+yarn run deploy-prod
 ```
