@@ -4,8 +4,12 @@
   "scripts": {
     "deploy-dev": "sls deploy --stage dev",
     "deploy-prod": "sls deploy --stage prod",
+    "lint": "./node_modules/.bin/eslint --ext .js ./",
+    "precommit": "yarn run lint",
+    "prepush": "yarn run lint",
     "test": "jest --coverage"
   },
+  "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.331.0",
     "dotenv": "^6.1.0",
