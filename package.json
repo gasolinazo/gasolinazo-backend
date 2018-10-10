@@ -1,26 +1,20 @@
 {
   "name": "gasolinazo-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "deploy-dev": "sls deploy --stage dev",
     "deploy-prod": "sls deploy --stage prod",
+    "lint": "./node_modules/.bin/eslint --ext .js ./",
+    "precommit": "yarn run lint",
+    "prepush": "yarn run lint",
     "test": "jest --coverage"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gasolinazo/gasolinazo-backend.git"
-  },
-  "author": "Alan Rodriguez <alanrodriguezromero@gmail.com>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gasolinazo/gasolinazo-backend/issues"
-  },
-  "homepage": "https://github.com/gasolinazo/gasolinazo-backend#readme",
   "dependencies": {
     "aws-sdk": "^2.331.0",
-    "dotenv": "^6.1.0"
+    "dotenv": "^6.1.0",
+    "request": "^2.88.0",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "eslint": "^5.6.1",
