@@ -8,7 +8,7 @@ provider:
   memorySize: 128
   timeout: 10
   environment:
-    DYNAMODB_TABLE: ${self:service}-${self:provider.stage}
+    DYNAMODB_TABLE: ${self:provider.stage}-gas-stations
   iamRoleStatements:
     - Effect: Allow
       Action:
