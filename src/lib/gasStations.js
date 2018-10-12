@@ -17,4 +17,27 @@ const loadGasStations = async (start = 0, end = gasStations.length) => {
   return r;
 };
 
-module.exports = loadGasStations;
+const updateGasPrices = async (prices) => {
+  const keys = Object.keys(prices);
+
+  const r = await Promise.all(
+    keys.map(async (key) => {
+      const updatedItem = {
+        id: key,
+        permisoid: key,
+      };
+
+      if (prices[key].regular) {
+        updatedItem.regular = prices[key].regular.amount;
+      }
+
+      console.log(updatedItem);
+
+      models.stations.updateItem(updatedItem);
+    }),
+  );
+  return r;
+};
+
+module.exports.updateGasPrices = updateGasPrices;
+module.exports.loadGasStations = loadGasStations;

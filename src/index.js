@@ -1,6 +1,6 @@
 const prices = require('./lib/retrievePrices');
 const models = require('./lib/models');
-const loadGasStations = require('./lib/gasStations');
+const { loadGasStations, updateGasPrices } = require('./lib/gasStations');
 
 async function testAPICall() {
   const r = await prices();
@@ -17,6 +17,21 @@ async function loadGas(start, end) {
   console.log(r);
 }
 
-loadGas(0, 0);
-testAPICall();
-testDb();
+async function updateGas() {
+  const items = {
+    24533:
+    {
+      regular: { amount: '99.99', lastUpdate: '2018-10-12 00:00:00' },
+      premium: { amount: '21.59', lastUpdate: '2018-10-10 00:00:00' },
+      diesel: { amount: '21', lastUpdate: '2018-10-10 00:00:00' },
+    },
+  };
+
+  const r = await updateGasPrices(items);
+  console.log(r);
+}
+
+// loadGas(0, 0);
+// testAPICall();
+// testDb();
+updateGas();
